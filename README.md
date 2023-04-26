@@ -24,7 +24,7 @@ State state = State.Idle;
 
 |이전|이후|
 |----|----|
-|<pre><code>public int IDLE = 0;<br>public int WALK = 1;<br>public int ATTACK = 2;<br>public int DEAD = 3;<br><br>int state = IDLE;<br><br>void Start(){<br><br>}<br><br>void OnMouseDown(){<br><br>    state = DEAD;<br><br>    if (state == DEAD) { Debug.Log("죽음"); }<br>}</code></pre>|<pre><code>enum State { Idle, Walk, Attact, Dead};<br><br>State state = State.Idle;<br><br>void Start(){<br><br>}<br><br>void OnMouseDown(){<br><br>    state = State.Dead;<br><br>    if (state == State.Dead) { Debug.Log("죽음"); }<br><br>}<br><br><br></code></pre>|
+|public int IDLE = 0;<br>public int WALK = 1;<br>public int ATTACK = 2;<br>public int DEAD = 3;<br><br>int state = IDLE;<br><br>void Start(){<br><br>}<br><br>void OnMouseDown(){<br><br>    state = DEAD;<br><br>    if (state == DEAD) { Debug.Log("죽음"); }<br>}|enum State { Idle, Walk, Attact, Dead};<br><br>State state = State.Idle;<br><br>void Start(){<br><br>}<br><br>void OnMouseDown(){<br><br>    state = State.Dead;<br><br>    if (state == State.Dead) { Debug.Log("죽음"); }<br><br>}<br><br><br>|
 
 2. 프로퍼티(Property)
 ```
