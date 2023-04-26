@@ -103,3 +103,121 @@ public class CarController : MonoBehaviour
 }
 
 ```
+
+3. 정적(Static) 클래스(Class), 메소드(Method), 필드(Field)
+```
+정적 클래스란?
+
+정적 클래스는 인스턴스화 할수없음
+정적 클래스는 class 키워드 앞에 static 키워드를 선언해서 만듬
+정적 클래스의 모든 멤버는 static으로 선언해야함
+정적 클래스는 생성자를 포함할 수 없음
+정적 클래스는 객체들이 처음 호출될 때 생성되고 프로그램이 종료될 때 해제되기 때문에 정적 클래스는 어디서든 접근 가능
+전역적으로 접근해야 하는 유틸리티 클래스를 만들 때 정적 클래스로 만들면 유용
+```
+```cs
+정적 클래스 예제
+
+public static class Utils
+{
+    public static int Sum(int num1, int num2)
+    {
+        return num1 + num2;
+    }
+
+    public static string Log(string text)
+    {
+        return "로그기록 : " + text;
+    }
+}
+
+
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    void Start()
+    {
+        int add = Utils.Sum(5, 8);
+        Debug.Log(Utils.Log("실행됨"));
+    }
+}
+```
+
+```
+정적 메소드란?
+
+정적 메소드는 인스턴스화 하지않아도 호출가능
+정적 메소드는 static 키워드를 선언해서 만듬
+정적 메소드는 메소드 내부에서 객체의 멤버를 참조할 수 없음
+정적 메소드는 인스턴스에서는 호출할 수 없음
+```
+```cs
+정적 메소드 예제
+
+public class Converter
+{
+    public const float num = 2.54f;
+
+    public static float InchToCentimeter(float inch)
+    {
+        return inch * num;
+    }
+
+    public static float CentimeterToInch(float centimeter)
+    {
+        return centimeter / num;
+    }
+}
+
+
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    void Start()
+    {
+        float inch = 24f;
+        float centimeter = 100f;
+
+        Debug.Log(Converter.InchToCentimeter(inch));
+        Debug.Log(Converter.CentimeterToInch(centimeter));
+    }
+}
+```
+
+```
+정적 필드란?
+
+정적 필드는 인스턴스를 직접 생성하지 않고 접근할 수 있음
+정적 필드는 자료형 앞에 static 키워드를 선언해서 만듬
+정적 필드는 어디서든 접근 가능
+```
+
+```cs
+public class Car
+{
+    public static int count = 0;
+
+    private string name;
+
+    public Car (string name)
+    {
+        this.name = name;
+        count++;
+    }
+}
+
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    void Start()
+    {
+        Car car1 = new Car("K5");
+        Car car2 = new Car("G90");
+
+        Debug.Log("Car Count : " + Car.count);
+    }
+}
+```
